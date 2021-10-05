@@ -1,0 +1,6 @@
+{
+    "name": "Testing Extension",
+    "description": "Just me learning about extensions",
+    "version": "1.0",
+    "manifest_version": 3
+}
