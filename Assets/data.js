@@ -1,0 +1,1 @@
+const shortcuts = '[{"name": "Manga", "sites": ["https://proxer.me/", "https://www.asurascans.com/", "https://reaperscans.com/", "https://kunmanga.com/", "https://mangarockteam.com/home/", "https://flamescans.org/", "https://gogoscans.com/", "https://lhtranslation.net/"]}]';

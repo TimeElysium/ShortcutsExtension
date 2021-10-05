@@ -1,0 +1,61 @@
+:root {
+    --color-dark: #2D3943;
+    --color-light: #f0f0f0;
+    --color-main: #2b87d3;
+    --color-danger: #F62451;
+    --color-success: #1fd78d;
+    --color-warn: #EB7B59;
+    --color-loading: #A4A4A4;
+    --color-dark-mode: #161c21;
+    --color-dark-text: #47535D;
+    --color-dark-mark: #40505c;
+    --color-dark-hover: #47535D;
+}
+
+body {
+    background-color: var(--color-dark-mode);
+    width: 200px;
+    height: 200px;
+}
+
+#shortcuts {
+    position: relative;
+    display: inline-block;
+}
+
+#shortcuts-btn {
+    background-color: var(--color-dark);
+    color: var(--color-main);
+    width: 100px;
+    height: 30px;
+    border: 1px solid var(--color-light);
+    border-radius: 5%;
+}
+
+#shortcuts-content {
+    display: none;
+    position: absolute;
+    background-color: var(--color-dark);
+}
+
+#shortcuts-content button {
+    color: var(--color-light);
+    display: block;
+    width: 100px;
+    height: 20px;
+    background-color: var(--color-dark);
+    margin-top: 2px;
+    border: 1px solid var(--color-light);
+}
+
+#shortcuts-content button:hover {
+    background-color: var(--color-dark-mode);
+}
+
+#shortcuts:hover #shortcuts-content {
+    display: block;
+}
+
+#shortcuts:hover #shortcuts-btn {
+    border: 2px solid var(--color-main);
+}
