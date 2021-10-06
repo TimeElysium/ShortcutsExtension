@@ -1,52 +1,40 @@
 // Read shortcut data and create needed buttons and shortcuts
-let shortcutsContainer = document.getElementById("shortcuts-content");
-let shortcutsContent = JSON.parse(shortcuts);
-for (let i = 0; i < shortcutsContent.length; i++) {
+let shortcutsContainer = document.getElementById("container");
+for (let shortcutName in shortcuts) {
+  let shortcutRow = document.createElement("div");
+  shortcutRow.className = "shortcutRow";
+  shortcutRow.id = shortcutName;
+  let content = shortcuts[shortcutName];
+
+  // Create shortcut button
   let shortcutButton = document.createElement("button");
-  shortcutButton.innerHTML = shortcutsContent[i].name;
+  shortcutButton.innerHTML = shortcutName;
+  shortcutButton.className = "shortcutBtn";
   shortcutButton.onclick = function() {
-    for (let j = 0; j < shortcutsContent[i].sites.length; j++) {
+    for (let j = 0; j < content.length; j++) {
       chrome.tabs.create({
-        url: shortcutsContent[i].sites[j]
+        url: content[j]
       });
     }
   }
-  shortcutsContainer.appendChild(shortcutButton);
+  shortcutRow.appendChild(shortcutButton);
+  // Create shortcut edit button
+  let shortcutEditButton = document.createElement("button");
+  shortcutEditButton.className = "shortcutEdit";
+  shortcutEditButton.innerHTML = "Edit";
+  shortcutRow.appendChild(shortcutEditButton);
+
+  // Create shortcut delete button
+  let shortcutDeleteButton = document.createElement("button");
+  shortcutDeleteButton.className = "shortcutDelete";
+  shortcutDeleteButton.innerHTML = "X";
+  shortcutDeleteButton.onclick = function() {
+    if (confirm("Do you really want to delete this shortcut?")) {
+      document.getElementById(shortcutName).remove();
+      delete shortcuts[shortcutName]; // will be modified later on
+    } 
+  }
+  shortcutRow.appendChild(shortcutDeleteButton);
+
+  shortcutsContainer.appendChild(shortcutRow);
 }
-
-
-
-
-
-/*
-mangaButton.addEventListener("click", async () => {
-    chrome.tabs.create({
-        url: 'https://www.youtube.com'
-    });
-});
-
-testingButton.addEventListener("click", async () => {
-    
-});
-
-let changeColor = document.getElementById("changeColor");
-
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
-
-changeColor.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: setPageBackgroundColor,
-    });
-});
-
-function setPageBackgroundColor() {
-    chrome.storage.sync.get("color", ({ color }) => {
-      document.body.style.backgroundColor = color;
-    });
-}
-*/
