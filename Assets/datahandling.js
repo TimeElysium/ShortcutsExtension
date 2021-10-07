@@ -1,10 +1,3 @@
-const scd = {"Manga": ["https://proxer.me/", "https://www.asurascans.com/", "https://reaperscans.com/", "https://kunmanga.com/", "https://mangarockteam.com/home/", "https://flamescans.org/", "https://gogoscans.com/", "https://lhtranslation.net/"],
-    "Testing": ["https://www.youtube.com/", "https://www.google.com/"],
-    "Tester": []};
-
-
-//chrome.storage.sync.set({"shortcutExtensionData": scd}, function() {});
-
 function loadDataToPage() {
   chrome.storage.sync.get("shortcutExtensionData", function(data) {
     const shortcuts = data["shortcutExtensionData"];
@@ -35,6 +28,14 @@ function loadDataToPage() {
         let shortcutEditButton = document.createElement("button");
         shortcutEditButton.className = "shortcutEdit";
         shortcutEditButton.innerHTML = "Edit";
+        shortcutEditButton.onclick = function() {
+            let elem = document.getElementById(shortcutName + ":CONTENT");
+            if (elem.className == "dropdownContentShown") {
+                elem.className = "dropdownContentHidden";
+            } else {
+                elem.className = "dropdownContentShown";
+            }
+        }
         shortcutRow.appendChild(shortcutEditButton);
 
         // Create shortcut delete button
@@ -55,7 +56,8 @@ function loadDataToPage() {
 
 
         let shortcutContentDropdown = document.createElement("div");
-        shortcutContentDropdown.className = "dropdownContent";
+        shortcutContentDropdown.className = "dropdownContentHidden";
+        shortcutContentDropdown.id = shortcutName + ":CONTENT";
 
         let shortcutRowContent = document.createElement("div");
         shortcutRowContent.className = "shortcutRowContent";

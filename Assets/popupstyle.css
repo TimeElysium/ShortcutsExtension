@@ -73,6 +73,16 @@
     border: 2px solid var(--color-danger);
 }
 
+#container .dropdownContentHidden {
+    display: none;
+}
+
+#container .dropdownContentShown {
+    display: inline-block;
+    background-color: var(--color-dark);
+}
+
+
 #container .shortcutRowContent {
     width: 250px;
 }
