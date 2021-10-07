@@ -26,12 +26,12 @@
 }
 
 #container .shortcutRow {
-    width: 170px;
+    width: 250px;
 }
 
 #container .shortcutRow .shortcutBtn {
     color: var(--color-main);
-    width: 100px;
+    width: 180px;
     height: 20px;
     background-color: var(--color-dark);
     margin-top: 2px;
@@ -73,8 +73,71 @@
     border: 2px solid var(--color-danger);
 }
 
+#container .shortcutRowContent {
+    width: 250px;
+}
+
+#container .shortcutRowContent .shortcutAddressInput {
+    width: 190px;
+    height: 20px;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    margin-top: 1px;
+    display: inline-block;
+    border: 1px solid var(--color-light);
+    padding-left: 5px;
+}
+
+#container .shortcutRowContent .shortcutAddressInput:focus {
+    border: 2px solid var(--color-light);
+}
+
+#container .shortcutRowContent .shortcutAddressSaver {
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-dark);
+    color: var(--color-success);
+    margin-top: 1px;
+    margin-left: 5px;
+    display: inline-block;
+    border: 1px solid var(--color-light);
+}
+
+#container .shortcutRowContent .shortcutAddressSaver:hover {
+    border: 2px solid var(--color-success);
+}
+
+#container .shortcutRowContent .shortcutAddressDelete {
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-dark);
+    color: var(--color-danger);
+    margin-top: 1px;
+    margin-left: 5px;
+    display: inline-block;
+    border: 1px solid var(--color-light);
+}
+
+#container .shortcutRowContent .shortcutAddressDelete:hover {
+    border: 2px solid var(--color-danger);
+}
+
+#container .shortcutAddressAdder {
+    width: 250px;
+    height: 20px;
+    color: var(--color-loading);
+    background-color: var(--color-dark);
+    margin-top: 1px;
+    display: inline-block;
+    border: 1px solid var(--color-light);
+}
+
+#container .shortcutAddressAdder:hover {
+    border: 2px solid var(--color-loading);
+} 
+
 #container #newShortcutButton {
-    width: 170px;
+    width: 250px;
     height: 20px;
     color: var(--color-success);
     background-color: var(--color-dark);
