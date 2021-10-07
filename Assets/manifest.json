@@ -1,9 +1,9 @@
 {
-    "name": "Testing Extension",
-    "description": "Just me learning about extensions",
+    "name": "Shortcut Extension",
+    "description": "Make a shortcut to everything",
     "version": "1.0",
     "manifest_version": 3,
-    "permissions": ["tabs"],
+    "permissions": ["storage", "tabs"],
     "action": {
         "default_popup": "popup.html"
     }

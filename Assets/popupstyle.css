@@ -15,6 +15,7 @@
 *, html, body {
     margin: 0; 
     padding: 0;
+    background-color: var(--color-dark);
 }
 
 #container {
@@ -70,4 +71,18 @@
 
 #container .shortcutRow .shortcutDelete:hover {
     border: 2px solid var(--color-danger);
+}
+
+#container #newShortcutButton {
+    width: 170px;
+    height: 20px;
+    color: var(--color-success);
+    background-color: var(--color-dark);
+    margin-top: 2px;
+    border: 1px solid var(--color-light);
+    display: inline-block;
+}
+
+#container #newShortcutButton:hover {
+    border: 2px solid var(--color-success);
 }
