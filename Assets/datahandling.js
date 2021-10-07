@@ -53,6 +53,10 @@ function loadDataToPage() {
 
         shortcutsContainer.appendChild(shortcutRow);
 
+
+        let shortcutContentDropdown = document.createElement("div");
+        shortcutContentDropdown.className = "dropdownContent";
+
         let shortcutRowContent = document.createElement("div");
         shortcutRowContent.className = "shortcutRowContent";
         for (let j = 0; j < content.length; j++) {
@@ -83,7 +87,7 @@ function loadDataToPage() {
             }
             shortcutRowContent.appendChild(shortcutAddressDelete);
         }
-        shortcutsContainer.appendChild(shortcutRowContent);
+        shortcutContentDropdown.appendChild(shortcutRowContent);
 
         let newShortcutAddressButton = document.createElement("button");
         newShortcutAddressButton.className = "shortcutAddressAdder";
@@ -93,7 +97,9 @@ function loadDataToPage() {
             chrome.storage.sync.set({"shortcutExtensionData": shortcuts}, function() {});
             loadDataToPage();
         }
-        shortcutsContainer.appendChild(newShortcutAddressButton);
+        shortcutContentDropdown.appendChild(newShortcutAddressButton);
+
+        shortcutsContainer.appendChild(shortcutContentDropdown);
     }
     
     let newShortcutButton = document.createElement("button");
