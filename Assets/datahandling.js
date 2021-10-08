@@ -17,7 +17,7 @@ function loadDataToPage() {
         shortcutButton.innerHTML = shortcutName;
         shortcutButton.className = "shortcutBtn";
         shortcutButton.onclick = function() {
-            for (let j = 0; j < content.length; j++) {
+            for (let j = 1; j < content.length; j++) {
             chrome.tabs.create({
                 url: content[j]
             });
@@ -29,12 +29,13 @@ function loadDataToPage() {
         shortcutEditButton.className = "shortcutEdit";
         shortcutEditButton.innerHTML = "Edit";
         shortcutEditButton.onclick = function() {
-            let elem = document.getElementById(shortcutName + ":CONTENT");
-            if (elem.className == "dropdownContentShown") {
-                elem.className = "dropdownContentHidden";
+            if (shortcuts[shortcutName][0] == true) {      
+                shortcuts[shortcutName][0] = false;
             } else {
-                elem.className = "dropdownContentShown";
+                shortcuts[shortcutName][0] = true;
             }
+            chrome.storage.sync.set({"shortcutExtensionData": shortcuts}, function() {});
+            loadDataToPage();
         }
         shortcutRow.appendChild(shortcutEditButton);
 
@@ -56,12 +57,16 @@ function loadDataToPage() {
 
 
         let shortcutContentDropdown = document.createElement("div");
-        shortcutContentDropdown.className = "dropdownContentHidden";
+        if (content[0] == true) {
+            shortcutContentDropdown.className = "dropdownContentShown";
+        } else {
+            shortcutContentDropdown.className = "dropdownContentHidden";
+        }
         shortcutContentDropdown.id = shortcutName + ":CONTENT";
 
         let shortcutRowContent = document.createElement("div");
         shortcutRowContent.className = "shortcutRowContent";
-        for (let j = 0; j < content.length; j++) {
+        for (let j = 1; j < content.length; j++) {
             let shortcutAddressInput = document.createElement("input");
             shortcutAddressInput.className = "shortcutAddressInput";
             shortcutAddressInput.type = "text";
@@ -110,7 +115,7 @@ function loadDataToPage() {
     newShortcutButton.onclick = function() {
         let newShortcut = prompt("Enter name of new shortcut:", "shortcutName");
         if (!(newShortcut in shortcuts)) {
-            shortcuts[newShortcut] = [];
+            shortcuts[newShortcut] = [false];
             chrome.storage.sync.set({"shortcutExtensionData": shortcuts}, function() {});
             loadDataToPage();
         }
